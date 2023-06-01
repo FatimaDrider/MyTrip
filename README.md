@@ -23,10 +23,10 @@ This project is a travel planner allowing users to create and manage their trips
 
 1. Clone this repository on your local machine: `git clone https://github.com/votre-utilisateur/planificateur-de-voyage-.git`.
 2. Install the frontend dependencies:
-   `cd planner-voyage/frontend`
+   `cd planificateur-de-voyage/front`
    `npm install
 3. Install backend dependencies:
-   `cd ../backend`
+   `cd planificateur-de-voyage/Back`
    `composer install`
 4. Configure the database:
 - Create a new MySQL database
@@ -35,7 +35,7 @@ This project is a travel planner allowing users to create and manage their trips
    `symfony console doctrine:migrations:migrate`
 6. Launch the development server:
    `symfony serve`
-7. Access the application in your browser at http://localhost:4200.
+7. Access the application in your browser at http://localhost:8000.
 
 
 
