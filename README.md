@@ -11,13 +11,13 @@ This project is a travel planner allowing users to create and manage their trips
 - Integration of external services for booking hotels, flights, etc.
 - Notifications for trip updates
 ## Prerequisites
-- Node.js version(16.16.0)
-- Angular CLI version(16.0.0)
-- Composer version(2.5.7)
-- Symfony CLI version(6.2.*)
-- Postgresql version()
-- jasmine version(4.6.0)
-  :emoji_code:
+- Node.js version 16.16.0
+- Angular CLI version 16.0.0
+- Composer version 2.5.7
+- Symfony CLI version 6.2.*
+- Postgresql version
+- jasmine version 4.6.0
+  
 
 ## Installation
 
