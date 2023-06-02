@@ -36,10 +36,10 @@ Ce projet est un planificateur de voyage permettant aux utilisateurs de créer e
 
 1. Clonez ce dépôt sur votre machine locale : `git clone https://github.com/your-user/Planner-trip.git`.
 2. Installez les dépendances du frontend :
-   `cd planificateur-de-voyage/front`
+   `cd Planner-trip/front`
    `npm install
 3. Installer les dépendances du backend :
-   `cd planificateur-de-voyage/Back`
+   `cd Planner-trip/Back`
    `composer install`
 4. Configurez la base de données :
 - Créer une nouvelle base de données PostgreSQL
