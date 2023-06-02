@@ -4,7 +4,7 @@ This project is a travel planner allowing users to create and manage their trips
 ## Features
 - Create, edit and delete trips
 - Add, edit and delete trip destinations
-- Search and filter trips according to various criteria
+- Search and filter trips according to various criteria such as destination, dates, activities
 - Secure user authentication system
 - User profile management
 - Comments on trips
