@@ -21,7 +21,7 @@ This project is a travel planner allowing users to create and manage their trips
 
 ## Installation
 
-1. Clone this repository on your local machine: `git clone https://github.com/votre-utilisateur/planificateur-de-voyage-.git`.
+1. Clone this repository on your local machine: `git clone https://github.com/your-user/planificateur-de-voyage-.git`.
 2. Install the frontend dependencies:
    `cd planificateur-de-voyage/front`
    `npm install
