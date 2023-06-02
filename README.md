@@ -29,7 +29,7 @@ This project is a travel planner allowing users to create and manage their trips
    `cd planificateur-de-voyage/Back`
    `composer install`
 4. Configure the database:
-- Create a new MySQL database
+- Create a new PostgreSQL database
 - Copy the .env file as .env.local and modify the appropriate environment variables for the database connection.
 5. Run the migrations to create the database tables:
    `symfony console doctrine:migrations:migrate`
