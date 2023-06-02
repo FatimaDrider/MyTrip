@@ -1,37 +1,43 @@
+image: node:latest
+
+#  les étapes du pipeline
 stages:
   - build
   - test
   - deploy
 
-variables:
-  NG_CLI_VERSION: "16.0.0" # Version de Angular CLI à utiliser
-
-cache:
-  paths:
-    - node_modules/
-
-before_script:
-  - apt-get update -qy
-  - apt-get install -y curl
-  - curl -sL https://deb.nodesource.com/setup_16.x | bash -
-  - apt-get install -y nodejs
-  - npm install -g @angular/cli@${NG_CLI_VERSION}
-  - npm install
-  - composer install --prefer-dist --no-interaction
-  - cp .env.example .env
-  - php bin/console doctrine:database:create --env=test
-  - php bin/console doctrine:schema:update --env=test --force
-
-build:
+#  build du frontend (Angular)
+build_frontend:
   stage: build
   script:
+    - npm install -g @angular/cli
+    - npm install
     - ng build --prod
 
-test:
+# test du frontend (Angular)
+test_frontend:
   stage: test
   script:
-    - ng test --watch=false --code-coverage
+    - ng test
 
-deploy_staging:
+#  build du backend (Symfony)
+build_backend:
+  stage: build
+  script:
+    - cd back
+    - composer install
+    - php bin/console doctrine:migrations:migrate --no-interaction
+
+# test du backend (Symfony)
+test_backend:
+  stage: test
+  script:
+    - cd back
+    - php bin/console doctrine:fixtures:load --no-interaction
+    - php vendor/bin/phpunit
+
+#  déploiement
+deploy:
   stage: deploy
   script:
+    - echo " Deploy"
