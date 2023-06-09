@@ -29,9 +29,10 @@ return [
                                 .'|(*:253)'
                             .')'
                         .')'
+                        .'|hotels/([^/]++)(*:278)'
                     .')'
                 .')'
-                .'|/_error/(\\d+)(?:\\.([^/]++))?(*:293)'
+                .'|/_error/(\\d+)(?:\\.([^/]++))?(*:316)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -49,7 +50,8 @@ return [
             [['_route' => '_api_/users/{id}{._format}_patch', '_controller' => 'api_platform.action.placeholder', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_operation_name' => '_api_/users/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/users/{id}{._format}_delete', '_controller' => 'api_platform.action.placeholder', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_operation_name' => '_api_/users/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        293 => [
+        278 => [[['_route' => 'app_hotel', '_controller' => 'App\\Controller\\HotelController::index'], ['location'], null, null, false, true, null]],
+        316 => [
             [['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
