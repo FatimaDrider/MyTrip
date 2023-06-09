@@ -14,5 +14,7 @@ return [
     '_api_/users/{id}{._format}_patch' => [['id', '_format'], ['_controller' => 'api_platform.action.placeholder', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_operation_name' => '_api_/users/{id}{._format}_patch'], [], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '[^/\\.]++', 'id', true], ['text', '/api/users']], [], [], []],
     '_api_/users/{id}{._format}_delete' => [['id', '_format'], ['_controller' => 'api_platform.action.placeholder', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_operation_name' => '_api_/users/{id}{._format}_delete'], [], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '[^/\\.]++', 'id', true], ['text', '/api/users']], [], [], []],
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
+    'app_auth_contreollerregister' => [[], ['_controller' => 'App\\Controller\\AuthController::register'], [], [['text', '/api/auth/register']], [], [], []],
+    'app_reset_password' => [[], ['_controller' => 'App\\Controller\\ResetPasswordController::__construct'], [], [['text', '/api/reset-password']], [], [], []],
     'api_login_check' => [[], [], [], [['text', '/api/auth/login']], [], [], []],
 ];
