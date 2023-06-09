@@ -333,6 +333,13 @@
         <argument type="service" id=".service_locator.CshazM0.App\Controller\AuthController"/>
       </call>
     </service>
+    <service id="App\Controller\EventsController" class="App\Controller\EventsController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.CshazM0.App\Controller\EventsController"/>
+      </call>
+    </service>
     <service id="App\Controller\HotelController" class="App\Controller\HotelController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -5552,6 +5559,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AuthController" class="App\Controller\AuthController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AuthController" class="App\Controller\AuthController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AuthController" class="App\Controller\AuthController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\EventsController" class="App\Controller\EventsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EventsController" class="App\Controller\EventsController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\EventsController" class="App\Controller\EventsController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\HotelController" class="App\Controller\HotelController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HotelController" class="App\Controller\HotelController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\HotelController" class="App\Controller\HotelController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5979,10 +5989,11 @@
         <argument key="yelpService" type="service_closure" id="App\Services\YelpService"/>
       </argument>
     </service>
-    <service id=".service_locator.ug2FuEA" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.sOFxJ1S" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AuthController::register" type="service_closure" id=".service_locator.6Je6wRP"/>
+        <argument key="App\Controller\EventsController::index" type="service_closure" id=".service_locator.dwjmfIJ"/>
         <argument key="App\Controller\HotelController::index" type="service_closure" id=".service_locator.dwjmfIJ"/>
         <argument key="App\Controller\RestaurantController::index" type="service_closure" id=".service_locator.dwjmfIJ"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
@@ -5990,6 +6001,7 @@
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Controller\AuthController:register" type="service_closure" id=".service_locator.6Je6wRP"/>
+        <argument key="App\Controller\EventsController:index" type="service_closure" id=".service_locator.dwjmfIJ"/>
         <argument key="App\Controller\HotelController:index" type="service_closure" id=".service_locator.dwjmfIJ"/>
         <argument key="App\Controller\RestaurantController:index" type="service_closure" id=".service_locator.dwjmfIJ"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
@@ -6154,6 +6166,12 @@
     <service id=".service_locator.CshazM0.App\Controller\AuthController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\AuthController"/>
       <argument>App\Controller\AuthController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.CshazM0" method="withContext"/>
+    </service>
+    <service id=".service_locator.CshazM0.App\Controller\EventsController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\EventsController"/>
+      <argument>App\Controller\EventsController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.CshazM0" method="withContext"/>
     </service>
@@ -6387,12 +6405,12 @@
       <argument type="service" id="api_platform.serializer.context_builder.filter"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.ug2FuEA"/>
+      <argument type="service" id=".service_locator.sOFxJ1S"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.ug2FuEA"/>
+      <argument type="service" id=".service_locator.sOFxJ1S"/>
     </service>
     <service id=".doctrine.orm.default_metadata_driver.inner" class="Doctrine\Persistence\Mapping\Driver\MappingDriverChain">
       <call method="addDriver">
@@ -7236,7 +7254,7 @@
     <service id="SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface" alias="symfonycasts.verify_email.helper"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.ug2FuEA"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.sOFxJ1S"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="api_platform.name_converter" alias="serializer.name_converter.metadata_aware"/>
@@ -7245,7 +7263,7 @@
     <service id=".service_locator.bnaLdkn" alias="api_platform.serializer_locator"/>
     <service id=".service_locator.o.uf2zi" alias=".service_locator.7nzbL4K"/>
     <service id=".service_locator.bHd.VmJ" alias=".service_locator.6Je6wRP"/>
-    <service id=".service_locator..FBYejD" alias=".service_locator.ug2FuEA"/>
+    <service id=".service_locator.U2gyKLS" alias=".service_locator.sOFxJ1S"/>
     <service id=".service_locator.9XMoc9I" alias=".service_locator.kzegaci"/>
     <service id=".service_locator.qBCHs1a" alias=".service_locator.QXcJQkF"/>
     <service id=".service_locator.VZoQk0z" alias=".service_locator.CshazM0"/>
