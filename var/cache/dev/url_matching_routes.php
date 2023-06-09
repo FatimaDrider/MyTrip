@@ -8,8 +8,8 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
-        '/api/auth/register' => [[['_route' => 'app_auth_contreollerregister', '_controller' => 'App\\Controller\\AuthController::register'], null, ['POST' => 0], null, false, false, null]],
-        '/api/reset-password' => [[['_route' => 'app_reset_password', '_controller' => 'App\\Controller\\ResetPasswordController::__construct'], null, ['POST' => 0], null, false, false, null]],
+        '/api/auth/register' => [[['_route' => 'app_auth_contreollerregister', '_controller' => 'App\\Controller\\Auth\\AuthController::register'], null, ['POST' => 0], null, false, false, null]],
+        '/api/reset-password' => [[['_route' => 'app_reset_password', '_controller' => 'App\\Controller\\Auth\\ResetPasswordController::__construct'], null, ['POST' => 0], null, false, false, null]],
         '/api/auth/login' => [[['_route' => 'api_login_check'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
@@ -29,13 +29,14 @@ return [
                                 .'|(*:253)'
                             .')'
                         .')'
-                        .'|events/([^/]++)(*:278)'
-                        .'|hotels/([^/]++)(*:301)'
-                        .'|restaurant/([^/]++)(*:328)'
-                        .'|transportation/([^/]++)(*:359)'
+                        .'|bars/([^/]++)(*:276)'
+                        .'|events/([^/]++)(*:299)'
+                        .'|hotels/([^/]++)(*:322)'
+                        .'|restaurant/([^/]++)(*:349)'
+                        .'|transportation/([^/]++)(*:380)'
                     .')'
                 .')'
-                .'|/_error/(\\d+)(?:\\.([^/]++))?(*:397)'
+                .'|/_error/(\\d+)(?:\\.([^/]++))?(*:418)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -53,11 +54,12 @@ return [
             [['_route' => '_api_/users/{id}{._format}_patch', '_controller' => 'api_platform.action.placeholder', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_operation_name' => '_api_/users/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/users/{id}{._format}_delete', '_controller' => 'api_platform.action.placeholder', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_operation_name' => '_api_/users/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        278 => [[['_route' => 'app_events', '_controller' => 'App\\Controller\\EventsController::index'], ['location'], null, null, false, true, null]],
-        301 => [[['_route' => 'app_hotel', '_controller' => 'App\\Controller\\HotelController::index'], ['location'], null, null, false, true, null]],
-        328 => [[['_route' => 'app_restaurant', '_controller' => 'App\\Controller\\RestaurantController::index'], ['location'], null, null, false, true, null]],
-        359 => [[['_route' => 'app_transport', '_controller' => 'App\\Controller\\TransportController::index'], ['location'], null, null, false, true, null]],
-        397 => [
+        276 => [[['_route' => 'app_bars', '_controller' => 'App\\Controller\\ApiReset\\BarsController::index'], ['location'], null, null, false, true, null]],
+        299 => [[['_route' => 'app_events', '_controller' => 'App\\Controller\\ApiReset\\EventsController::index'], ['location'], null, null, false, true, null]],
+        322 => [[['_route' => 'app_hotel', '_controller' => 'App\\Controller\\ApiReset\\HotelController::index'], ['location'], null, null, false, true, null]],
+        349 => [[['_route' => 'app_restaurant', '_controller' => 'App\\Controller\\ApiReset\\RestaurantController::index'], ['location'], null, null, false, true, null]],
+        380 => [[['_route' => 'app_transport', '_controller' => 'App\\Controller\\ApiReset\\TransportController::index'], ['location'], null, null, false, true, null]],
+        418 => [
             [['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

@@ -1,27 +1,25 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\ApiReset;
 
 use App\Services\YelpService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class BarsController extends AbstractController
+class EventsController extends AbstractController
 {
-    #[Route('/api/bars/{location}', name: 'app_bars')]
+    #[Route('/api/events/{location}', name: 'app_events')]
     public function index(string $location, YelpService $yelpService, Request $request): JsonResponse
     {
-        $term = 'bars';
+        $term = 'events';
         $limit = 5;
         $startDate = $request->query->get('start_date');
-        $endDate = $request->query->get('end_date');
+        $endDate= $request->query->get('end_date');
 
-        $bars = $yelpService->search($term, $location, $limit, $startDate, $endDate);
+        $events = $yelpService->search($term,$location, $limit, $startDate, $endDate);
 
-
-        return new JsonResponse($bars);
+        return new JsonResponse($events);
     }
 }
