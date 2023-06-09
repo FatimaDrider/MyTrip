@@ -19,5 +19,6 @@ return [
     'app_hotel' => [['location'], ['_controller' => 'App\\Controller\\HotelController::index'], [], [['variable', '/', '[^/]++', 'location', true], ['text', '/api/hotels']], [], [], []],
     'app_reset_password' => [[], ['_controller' => 'App\\Controller\\ResetPasswordController::__construct'], [], [['text', '/api/reset-password']], [], [], []],
     'app_restaurant' => [['location'], ['_controller' => 'App\\Controller\\RestaurantController::index'], [], [['variable', '/', '[^/]++', 'location', true], ['text', '/api/restaurant']], [], [], []],
+    'app_transport' => [['location'], ['_controller' => 'App\\Controller\\TransportController::index'], [], [['variable', '/', '[^/]++', 'location', true], ['text', '/api/transportation']], [], [], []],
     'api_login_check' => [[], [], [], [['text', '/api/auth/login']], [], [], []],
 ];
