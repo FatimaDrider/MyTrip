@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TransportController extends AbstractController
 {
     #[Route('/api/transportation/{location}', name: 'app_transport')]
-    public function index(string $location, YelpService $yelpService , Request $request): JsonResponse
+    public function searchTransport(string $location, YelpService $yelpService , Request $request): JsonResponse
     {
         $term= 'transportation';
         $limit = 5;

@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class BarsController extends AbstractController
 {
     #[Route('/api/bars/{location}', name: 'app_bars')]
-    public function index(string $location, YelpService $yelpService, Request $request): JsonResponse
+    public function searchBars(string $location, YelpService $yelpService, Request $request): JsonResponse
     {
         $term = 'bars';
         $limit = 5;

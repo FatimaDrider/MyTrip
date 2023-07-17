@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class EventsController extends AbstractController
 {
     #[Route('/api/events/{location}', name: 'app_events')]
-    public function index(string $location, YelpService $yelpService, Request $request): JsonResponse
+    public function searchEvents(string $location, YelpService $yelpService, Request $request): JsonResponse
     {
         $term = 'events';
         $limit = 5;

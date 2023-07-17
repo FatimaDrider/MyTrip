@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class RestaurantController extends AbstractController
 {
     #[Route('/api/restaurant/{location}', name: 'app_restaurant')]
-    public function index(string $location, YelpService $yelpService, Request $request): JsonResponse
+    public function seatchRestaurant(string $location, YelpService $yelpService, Request $request): JsonResponse
     {
         $term= 'restaurant';
         $limit = 5;

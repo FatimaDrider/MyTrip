@@ -54,7 +54,7 @@ return [
             [['_route' => '_api_/users/{id}{._format}_patch', '_controller' => 'api_platform.action.placeholder', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_operation_name' => '_api_/users/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/users/{id}{._format}_delete', '_controller' => 'api_platform.action.placeholder', '_format' => null, '_stateless' => null, '_api_resource_class' => 'App\\Entity\\User', '_api_operation_name' => '_api_/users/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        276 => [[['_route' => 'app_bars', '_controller' => 'App\\Controller\\ApiReset\\BarsController::index'], ['location'], null, null, false, true, null]],
+        276 => [[['_route' => 'app_bars', '_controller' => 'App\\Controller\\ApiReset\\BarsController::searchBars'], ['location'], null, null, false, true, null]],
         299 => [[['_route' => 'app_events', '_controller' => 'App\\Controller\\ApiReset\\EventsController::index'], ['location'], null, null, false, true, null]],
         322 => [[['_route' => 'app_hotel', '_controller' => 'App\\Controller\\ApiReset\\HotelController::index'], ['location'], null, null, false, true, null]],
         349 => [[['_route' => 'app_restaurant', '_controller' => 'App\\Controller\\ApiReset\\RestaurantController::index'], ['location'], null, null, false, true, null]],
