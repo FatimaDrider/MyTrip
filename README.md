@@ -8,7 +8,7 @@ Ce projet est un planificateur de voyage permettant aux utilisateurs de créer e
 3. Intégration avec des services externes : Intégrer des API tierces pour obtenir des informations sur les activités , les hôtels, les restaurants, les bars..
 4. Gestion des itinéraires :  Implémenter une fonctionnalité permettant de créer, de stocker et de gérer les itinéraires des utilisateurs.
 5. Système sécurisé d'authentification des utilisateurs
-6. Calcul des coûts : Mettre en place des fonctionnalités pour calculer les coûts estimés des voyages en fonction des réservations et des préférences des utilisateurs
+
 7. Commentaires sur les voyages
 8. Intégration de services externes pour la réservation d'hôtels, de vols, etc.
 9. Notifications pour les mises à jour de voyages
@@ -19,7 +19,6 @@ Ce projet est un planificateur de voyage permettant aux utilisateurs de créer e
 3. Gestion des itinéraires : Permettre aux utilisateurs de créer des itinéraires personnalisés en sélectionnant des destinations, des dates et des activités.
 4. Affichage des informations sur les lieux : Intégrer des informations détaillées sur les lieux touristiques, les hôtels, les restaurants, les activités, etc., afin d'aider les utilisateurs à prendre des décisions éclairées.
 5. Authentification des utilisateurs : Mettre en place un système d'authentification pour permettre aux utilisateurs de créer des comptes, de se connecter et de gérer leurs profils.
-6. Suivi des dépenses : Fournir aux utilisateurs un moyen de suivre leurs dépenses liées aux voyages et d'obtenir des rapports détaillés.
 
 ## Prérequis
 
