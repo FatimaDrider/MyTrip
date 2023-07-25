@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\UserRepository;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -19,8 +20,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
-
+    
 
     private ?bool $isVerified;
 
@@ -43,19 +43,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column]
     private ?string $password = null;
-
-
-
     #[ORM\Column(type:'datetime',nullable:true)]
 
     private \DateTime $dateOfBirth ;
     #[ORM\Column(length: 255,nullable:true)]
     private string $genre ;
 
+    #[ORM\OneToMany(mappedBy: 'usser', targetEntity: Itinerary::class)]
+    private Collection $itineraries;
 
-
-
-
+    public function __construct()
+    {
+        $this->itineraries = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -117,15 +117,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-
-
     public function getLastname(): string
     {
         return $this->lastname;
     }
-
-
     public function setLastname(string $lastname): User
     {
         $this->lastname = $lastname;
@@ -175,12 +170,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->genre = $genre;
         return $this;
     }
-
-
-
-
-
-
     /**
      * @return bool|null
      */
@@ -197,10 +186,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->isVerified = $isVerified;
         return $this;
     }
-
-
-
-
     /**
      * @see UserInterface
      */
@@ -239,8 +224,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @return Collection<int, Itinerary>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->itineraries;
+    }
 
+    public function addUser(Itinerary $user): static
+    {
+        if (!$this->itineraries->contains($user)) {
+            $this->itineraries->add($user);
+            $user->setUsser($this);
+        }
 
+        return $this;
+    }
 
+    public function removeUser(Itinerary $user): static
+    {
+        if ($this->itineraries->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getUsser() === $this) {
+                $user->setUsser(null);
+            }
+        }
 
+        return $this;
+    }
 }

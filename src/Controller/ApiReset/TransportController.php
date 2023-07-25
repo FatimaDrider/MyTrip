@@ -11,9 +11,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class TransportController extends AbstractController
 {
     #[Route('/api/transportation/{location}', name: 'app_transport')]
-    public function searchTransport(string $location, YelpService $yelpService , Request $request): JsonResponse
+    public function searchTransport(string $location, YelpService $yelpService, Request $request): JsonResponse
     {
-        $term= 'transportation';
+        $term = 'transportation';
         $limit = 5;
         $startDate = $request->query->get('start_date');
         $endDate = $request->query->get('end_date');

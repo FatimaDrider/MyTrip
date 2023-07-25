@@ -17,10 +17,7 @@ class BarsController extends AbstractController
         $limit = 5;
         $startDate = $request->query->get('start_date');
         $endDate = $request->query->get('end_date');
-
         $bars = $yelpService->search($term, $location, $limit, $startDate, $endDate);
-
-
         return new JsonResponse($bars);
     }
 }

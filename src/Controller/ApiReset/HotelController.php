@@ -11,6 +11,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class HotelController extends AbstractController
 {
     #[Route('/api/hotels/{location}', name: 'app_hotel')]
+
+
     public function sarchHotels(string $location, YelpService $yelpService,Request $request): JsonResponse
     {
         $term = 'hotels';

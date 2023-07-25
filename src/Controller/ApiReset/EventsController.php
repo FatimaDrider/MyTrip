@@ -17,9 +17,7 @@ class EventsController extends AbstractController
         $limit = 5;
         $startDate = $request->query->get('start_date');
         $endDate= $request->query->get('end_date');
-
         $events = $yelpService->search($term,$location, $limit, $startDate, $endDate);
-
         return new JsonResponse($events);
     }
 }
