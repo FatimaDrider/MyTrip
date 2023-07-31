@@ -20,17 +20,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-    
-
     private ?bool $isVerified;
-
     #[ORM\Column(type:'string',length: 255, nullable: true)]
-
     private $resetToken;
     #[ORM\Column(type:'datetime', nullable: true)]
 
     private $resetTokenExpiresAt;
-
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
@@ -52,11 +47,41 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'usser', targetEntity: Itinerary::class)]
     private Collection $itineraries;
 
+    #[ORM\OneToOne(mappedBy: 'user', targetEntity: "App\Entity\Profile", cascade: ['persist', 'remove'])]
+    private  $profile ;
+    #[ORM\OneToMany(mappedBy: 'user',targetEntity:"App\Entity\Commentaire")]
+    private $commentaires;
+
+    public function getProfile(): ?Profile
+    {
+        return $this->profile;
+    }
+
+    public function setProfile(Profile $profile): void
+    {
+        $this->profile = $profile;
+    }
     public function __construct()
     {
         $this->itineraries = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
     }
 
+    /**
+     * @return Collection|Commentaire[]
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    /**
+     * @param ArrayCollection $commentaires
+     */
+    public function setCommentaires(ArrayCollection $commentaires): void
+    {
+        $this->commentaires = $commentaires;
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -253,4 +278,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+
+
+
+    public function addCommentaire(Commentaire $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getUser() === $this) {
+                $commentaire->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }

@@ -39,10 +39,6 @@ class AuthController extends AbstractController
         $em->persist($user);
         $em->flush();
 
-
-
-        // do anything else you need here, like send an email
-
         return new JsonResponse ([
             "message"=>"new user created"
         ], Response::HTTP_CREATED);
